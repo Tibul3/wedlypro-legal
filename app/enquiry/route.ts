@@ -13,10 +13,11 @@ export async function GET(req: NextRequest) {
   });
 
   const html = await upstream.text();
+
   return new NextResponse(html, {
     status: upstream.status,
     headers: {
-      'Content-Type': upstream.headers.get('content-type') ?? 'text/html; charset=utf-8',
+      'Content-Type': 'text/html; charset=utf-8',
       'Cache-Control': 'no-store',
     },
   });
@@ -33,10 +34,11 @@ export async function POST(req: NextRequest) {
   });
 
   const text = await upstream.text();
+
   return new NextResponse(text, {
     status: upstream.status,
     headers: {
-      'Content-Type': upstream.headers.get('content-type') ?? 'application/json',
+      'Content-Type': 'application/json; charset=utf-8',
       'Cache-Control': 'no-store',
     },
   });
