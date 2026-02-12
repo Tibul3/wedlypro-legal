@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const SUPABASE_FORM_URL =
-  'https://hxoqpapwugszehqshkox.supabase.co/functions/v1/publicLeadFormSubmit';
-
-const SLUG_PATTERN = /^[a-z0-9-]{3,80}$/;
+const SUPABASE_CONTRACT_SIGN_URL =
+  'https://hxoqpapwugszehqshkox.supabase.co/functions/v1/contractSign';
 
 function htmlShell(title: string, message: string, status = 400) {
   const html = `<!doctype html>
@@ -41,16 +39,12 @@ function htmlShell(title: string, message: string, status = 400) {
 }
 
 export async function GET(req: NextRequest) {
-  const slug = req.nextUrl.searchParams.get('slug')?.trim() ?? '';
-  if (!slug) {
-    return htmlShell('Missing enquiry link', 'This enquiry link is missing a supplier reference.', 400);
+  const token = req.nextUrl.searchParams.get('token')?.trim();
+  if (!token) {
+    return htmlShell('Missing signing link', 'This contract link is missing a token.', 400);
   }
 
-  if (!SLUG_PATTERN.test(slug)) {
-    return htmlShell('Invalid enquiry link', 'This enquiry link is not valid.', 400);
-  }
-
-  const upstream = await fetch(`${SUPABASE_FORM_URL}?slug=${encodeURIComponent(slug)}`, {
+  const upstream = await fetch(`${SUPABASE_CONTRACT_SIGN_URL}?token=${encodeURIComponent(token)}`, {
     method: 'GET',
     cache: 'no-store',
   });
@@ -59,7 +53,7 @@ export async function GET(req: NextRequest) {
   const body = await upstream.text();
 
   if (!upstream.ok) {
-    let message = 'Unable to load enquiry form. Please contact the supplier directly.';
+    let message = 'This contract link is invalid, expired, or no longer available.';
     if (contentType.includes('application/json')) {
       try {
         const parsed = JSON.parse(body);
@@ -68,7 +62,7 @@ export async function GET(req: NextRequest) {
         // Keep fallback message.
       }
     }
-    return htmlShell('Enquiry form unavailable', message, upstream.status);
+    return htmlShell('Unable to sign contract', message, upstream.status);
   }
 
   return new NextResponse(body, {
@@ -82,14 +76,9 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const contentType = req.headers.get('content-type') ?? '';
-  if (!contentType.toLowerCase().includes('application/json')) {
-    return NextResponse.json({ error: 'Request must be JSON.' }, { status: 400 });
-  }
-
   const body = await req.text();
 
-  const upstream = await fetch(SUPABASE_FORM_URL, {
+  const upstream = await fetch(SUPABASE_CONTRACT_SIGN_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body,

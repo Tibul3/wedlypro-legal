@@ -1,18 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-const SUPABASE_FORM_URL =
-  'https://hxoqpapwugszehqshkox.supabase.co/functions/v1/publicLeadFormSubmit';
+const SLUG_PATTERN = /^[a-z0-9-]{3,80}$/;
 
 export async function GET(
-  _req: NextRequest,
+  req: NextRequest,
   context: { params: Promise<Record<string, string>> }
 ) {
   const params = await context.params;
-  const slug = params.slug;
-  if (!slug) return new NextResponse('Missing slug.', { status: 400 });
+  const slug = params.slug?.trim() ?? '';
+  if (!slug || !SLUG_PATTERN.test(slug)) {
+    return new NextResponse('Invalid slug.', { status: 400 });
+  }
 
-  return NextResponse.redirect(
-    `https://wedlypro.com/enquiry?slug=${encodeURIComponent(slug)}`,
-    302
-  );
+  const target = new URL('/enquiry', req.url);
+  target.searchParams.set('slug', slug);
+  return NextResponse.redirect(target, 302);
 }
