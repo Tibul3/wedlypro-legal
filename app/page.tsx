@@ -40,10 +40,10 @@ const faq = [
 
 export default function HomePage() {
   return (
-    <div>
-      <section className="relative overflow-hidden border-b border-black/5 bg-white">
+    <div className="py-8">
+      <section className="relative overflow-hidden rounded-3xl border border-black/10 bg-white shadow-[0_20px_40px_-24px_rgba(16,24,40,0.35)]">
         <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-stone-100/60 to-transparent" />
-        <div className="relative mx-auto grid w-full max-w-6xl gap-10 px-6 py-16 md:grid-cols-2 md:py-24">
+        <div className="relative grid w-full gap-10 px-6 py-16 md:grid-cols-2 md:px-10 md:py-20">
           <div>
             <p className="mb-3 text-xs font-semibold uppercase tracking-[0.18em] text-zinc-600">
               Wedding Supplier CRM
@@ -88,7 +88,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-14 md:py-16">
+      <section className="mt-8 rounded-3xl border border-black/10 bg-white px-6 py-10 shadow-[0_20px_40px_-24px_rgba(16,24,40,0.35)] md:px-8 md:py-12">
         <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 md:text-3xl">Features</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {features.map((item) => (
@@ -99,36 +99,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-y border-black/5 bg-white">
-        <div className="mx-auto w-full max-w-6xl px-6 py-14 md:py-16">
-          <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 md:text-3xl">How it works</h2>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            <article className="rounded-2xl border border-black/10 bg-zinc-50 p-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-600">Step 1</p>
-              <h3 className="mt-2 text-lg font-medium text-zinc-900">Capture enquiries</h3>
-              <p className="mt-2 text-sm leading-6 text-zinc-600">
-                Add leads manually or collect them through your public enquiry form.
-              </p>
-            </article>
-            <article className="rounded-2xl border border-black/10 bg-zinc-50 p-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-600">Step 2</p>
-              <h3 className="mt-2 text-lg font-medium text-zinc-900">Convert and plan</h3>
-              <p className="mt-2 text-sm leading-6 text-zinc-600">
-                Convert leads to clients and manage notes, timelines, and key dates.
-              </p>
-            </article>
-            <article className="rounded-2xl border border-black/10 bg-zinc-50 p-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-600">Step 3</p>
-              <h3 className="mt-2 text-lg font-medium text-zinc-900">Send documents</h3>
-              <p className="mt-2 text-sm leading-6 text-zinc-600">
-                Generate quotes, invoices, and contracts with clear status tracking.
-              </p>
-            </article>
-          </div>
+      <section className="mt-8 rounded-3xl border border-black/10 bg-white px-6 py-10 shadow-[0_20px_40px_-24px_rgba(16,24,40,0.35)] md:px-8 md:py-12">
+        <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 md:text-3xl">How it works</h2>
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          <article className="rounded-2xl border border-black/10 bg-zinc-50 p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-600">Step 1</p>
+            <h3 className="mt-2 text-lg font-medium text-zinc-900">Capture enquiries</h3>
+            <p className="mt-2 text-sm leading-6 text-zinc-600">
+              Add leads manually or collect them through your public enquiry form.
+            </p>
+          </article>
+          <article className="rounded-2xl border border-black/10 bg-zinc-50 p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-600">Step 2</p>
+            <h3 className="mt-2 text-lg font-medium text-zinc-900">Convert and plan</h3>
+            <p className="mt-2 text-sm leading-6 text-zinc-600">
+              Convert leads to clients and manage notes, timelines, and key dates.
+            </p>
+          </article>
+          <article className="rounded-2xl border border-black/10 bg-zinc-50 p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-zinc-600">Step 3</p>
+            <h3 className="mt-2 text-lg font-medium text-zinc-900">Send documents</h3>
+            <p className="mt-2 text-sm leading-6 text-zinc-600">
+              Generate quotes, invoices, and contracts with clear status tracking.
+            </p>
+          </article>
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-14 md:py-16">
+      <section className="mt-8 rounded-3xl border border-black/10 bg-white px-6 py-10 shadow-[0_20px_40px_-24px_rgba(16,24,40,0.35)] md:px-8 md:py-12">
         <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 md:text-3xl">App preview</h2>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {[1, 2, 3].map((phone) => (
@@ -142,21 +140,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="border-t border-black/5 bg-white">
-        <div className="mx-auto w-full max-w-6xl px-6 py-14 md:py-16">
-          <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 md:text-3xl">Frequently asked questions</h2>
-          <div className="mt-6 divide-y divide-black/10 rounded-2xl border border-black/10">
-            {faq.map((item) => (
-              <div key={item.q} className="bg-white px-5 py-4">
-                <h3 className="text-sm font-semibold text-zinc-900">{item.q}</h3>
-                <p className="mt-2 text-sm leading-6 text-zinc-600">{item.a}</p>
-              </div>
-            ))}
-          </div>
+      <section className="mt-8 rounded-3xl border border-black/10 bg-white px-6 py-10 shadow-[0_20px_40px_-24px_rgba(16,24,40,0.35)] md:px-8 md:py-12">
+        <h2 className="text-2xl font-semibold tracking-tight text-zinc-900 md:text-3xl">Frequently asked questions</h2>
+        <div className="mt-6 divide-y divide-black/10 rounded-2xl border border-black/10">
+          {faq.map((item) => (
+            <div key={item.q} className="bg-white px-5 py-4">
+              <h3 className="text-sm font-semibold text-zinc-900">{item.q}</h3>
+              <p className="mt-2 text-sm leading-6 text-zinc-600">{item.a}</p>
+            </div>
+          ))}
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-6 py-10">
+      <section className="mt-8">
         <div className="rounded-2xl border border-black/10 bg-white p-6">
           <p className="text-sm text-zinc-600">
             Need help now? Contact{" "}
