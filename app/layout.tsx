@@ -31,7 +31,7 @@ export default function RootLayout({
                 alt="Wedly Pro logo"
                 width={36}
                 height={36}
-                className="h-9 w-9 rounded-xl border border-black/10 bg-white object-contain"
+                className="h-9 w-9 rounded-xl border border-black/10 object-cover"
               />
               <span className="text-base font-semibold tracking-tight text-zinc-900">Wedly Pro</span>
             </Link>
