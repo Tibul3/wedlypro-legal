@@ -11,9 +11,47 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
+const siteUrl = "https://wedlypro.com";
+
 export const metadata: Metadata = {
-  title: "Wedly Pro",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: "Wedly Pro",
+    template: "%s | Wedly Pro",
+  },
   description: "Wedding Supplier CRM for modern wedding professionals",
+  applicationName: "Wedly Pro",
+  keywords: [
+    "Wedding CRM",
+    "Wedding supplier software",
+    "Wedding business app",
+    "Lead tracking",
+    "Client management",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: "Wedly Pro",
+    title: "Wedly Pro",
+    description: "Wedding Supplier CRM for modern wedding professionals",
+    images: [
+      {
+        url: "/screen1.png",
+        width: 1200,
+        height: 630,
+        alt: "Wedly Pro app preview",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Wedly Pro",
+    description: "Wedding Supplier CRM for modern wedding professionals",
+    images: ["/screen1.png"],
+  },
 };
 
 export default function RootLayout({
