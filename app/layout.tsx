@@ -72,7 +72,7 @@ export default function RootLayout({
                   alt="Wedly Pro logo"
                   width={48}
                   height={48}
-                  className="h-12 w-12 scale-125 object-contain"
+                  className="h-11 w-11 object-contain"
                 />
               </span>
               <span className="text-base font-semibold tracking-tight text-zinc-900">Wedly Pro</span>
